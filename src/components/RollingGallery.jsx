@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useAnimation, useTransform } from 'motion/react';
 
 const IMGS = [
-  './public/imgs/1.jpeg',
-  './public/imgs/2.jpeg',
-  './public/imgs/3.jpeg',
-  './public/imgs/4.jpeg',
-  './public/imgs/5.jpeg',
-  './public/imgs/6.jpeg',
-  './public/imgs/7.jpeg',
-  './public/imgs/8.jpeg',
+  '/imgs/1.jpeg',
+  '/imgs/2.jpeg',
+  '/imgs/3.jpeg',
+  '/imgs/4.jpeg',
+  '/imgs/5.jpeg',
+  '/imgs/6.jpeg',
+  '/imgs/7.jpeg',
+  '/imgs/8.jpeg',
 ];
 
 const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] }) => {
@@ -26,7 +26,7 @@ const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] })
 
   const cylinderWidth = isScreenSizeSm ? 1100 : 1800;
   const faceCount = images.length;
-  const faceWidth = (cylinderWidth / faceCount) * 1.5;
+  const faceWidth = (cylinderWidth / faceCount) * 1;
   const radius = cylinderWidth / (2 * Math.PI);
 
   const dragFactor = 0.05;
