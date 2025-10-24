@@ -54,27 +54,24 @@ Clone the repository:
 ```bash
 git clone https://github.com/markabano/portfolio.git
 cd portfolio
+
 Install dependencies:
-
-bash
-Copy code
 npm install
-Run locally:
 
-bash
-Copy code
+Run locally:
 npm run dev
+
 Then open your browser and go to:
 👉 http://localhost:5173
 
-🔑 Environment Variables
-Create a .env file in the root directory with the following:
 
-env
-Copy code
+🔑 Environment Variables
+
+Create a .env file in the root directory with the following:
 VITE_EMAILJS_SERVICE_ID=your_service_id
 VITE_EMAILJS_TEMPLATE_ID=your_template_id
 VITE_EMAILJS_PUBLIC_KEY=your_public_key
+
 📫 Contact
 If you’d like to collaborate or get in touch:
 
@@ -94,8 +91,5 @@ I enjoy working with modern JavaScript frameworks, automating workflows, and sol
 This project is open-source and available under the MIT License.
 
 ⭐️ If you like this project, consider giving it a star!
-
-yaml
-Copy code
 
 ---
