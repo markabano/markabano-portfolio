@@ -42,9 +42,6 @@ src/
 ├── App.jsx # Root component
 └── main.jsx # Entry point
 
-yaml
-Copy code
-
 ---
 
 ## 🛠️ Installation & Setup
