@@ -11,10 +11,38 @@ function Navbar() {
         <div className="relative flex items-center justify-center">
           {/* Desktop Menu (Centered) */}
           <ul className="hidden sm:flex flex-row text-white items-center gap-30">
-            <li><a href="#home" className="hover:text-orange-300 transition">Home</a></li>
-            <li><a href="#projects" className="hover:text-orange-300 transition">Projects</a></li>
-            <li><a href="#aboutMe" className="hover:text-orange-300 transition">About Me</a></li>
-            <li><a href="#contact" className="hover:text-orange-300 transition">Contact</a></li>
+            <motion.li
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <a href="#home" className="hover:text-orange-300 transition">
+                Home
+              </a>
+            </motion.li>
+            <motion.li
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <a href="#projects" className="hover:text-orange-300 transition">
+                Projects
+              </a>
+            </motion.li>
+            <motion.li
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <a href="#aboutMe" className="hover:text-orange-300 transition">
+                About Me
+              </a>
+            </motion.li>
+            <motion.li
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <a href="#contact" className="hover:text-orange-300 transition">
+                Contact
+              </a>
+            </motion.li>
           </ul>
 
           {/* Hamburger Button (Mobile, Positioned Right) */}
@@ -35,10 +63,42 @@ function Navbar() {
               exit={{ opacity: 0, y: -10 }}
               className="flex flex-col mt-3 gap-3 text-white text-center md:hidden"
             >
-              <li><a href="#home" className="hover:text-orange-300 transition" onClick={() => setIsOpen(false)}>Home</a></li>
-              <li><a href="#projects" className="hover:text-orange-300 transition" onClick={() => setIsOpen(false)}>Projects</a></li>
-              <li><a href="#aboutMe" className="hover:text-orange-300 transition" onClick={() => setIsOpen(false)}>About Me</a></li>
-              <li><a href="#contact" className="hover:text-orange-300 transition" onClick={() => setIsOpen(false)}>Contact</a></li>
+              <li>
+                <a
+                  href="#home"
+                  className="hover:text-orange-300 transition"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#projects"
+                  className="hover:text-orange-300 transition"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#aboutMe"
+                  className="hover:text-orange-300 transition"
+                  onClick={() => setIsOpen(false)}
+                >
+                  About Me
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  className="hover:text-orange-300 transition"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Contact
+                </a>
+              </li>
             </motion.ul>
           )}
         </AnimatePresence>
