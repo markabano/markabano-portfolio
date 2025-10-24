@@ -1,27 +1,38 @@
-import { useEffect, useState } from 'react';
-import { motion, useMotionValue, useAnimation, useTransform } from 'motion/react';
+import { useEffect, useState } from "react";
+import {
+  motion,
+  useMotionValue,
+  useAnimation,
+  useTransform,
+} from "motion/react";
 
 const IMGS = [
-  '/imgs/1.jpeg',
-  '/imgs/2.jpeg',
-  '/imgs/3.jpeg',
-  '/imgs/4.jpeg',
-  '/imgs/5.jpeg',
-  '/imgs/6.jpeg',
-  '/imgs/7.jpeg',
-  '/imgs/8.jpeg',
+  "/imgs/1.jpeg",
+  "/imgs/2.jpeg",
+  "/imgs/3.jpeg",
+  "/imgs/4.jpeg",
+  "/imgs/5.jpeg",
+  "/imgs/6.jpeg",
+  "/imgs/7.jpeg",
+  "/imgs/8.jpeg",
 ];
 
-const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] }) => {
+const RollingGallery = ({
+  autoplay = false,
+  pauseOnHover = false,
+  images = [],
+}) => {
   images = images.length > 0 ? images : IMGS;
 
-  const [isScreenSizeSm, setIsScreenSizeSm] = useState(window.innerWidth <= 640);
+  const [isScreenSizeSm, setIsScreenSizeSm] = useState(
+    window.innerWidth <= 640
+  );
   const [aspectRatios, setAspectRatios] = useState({}); // store per-image aspect ratio
 
   useEffect(() => {
     const handleResize = () => setIsScreenSizeSm(window.innerWidth <= 640);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const cylinderWidth = isScreenSizeSm ? 1100 : 1800;
@@ -32,12 +43,15 @@ const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] })
   const dragFactor = 0.05;
   const rotation = useMotionValue(0);
   const controls = useAnimation();
-  const transform = useTransform(rotation, val => `rotate3d(0,1,0,${val}deg)`);
+  const transform = useTransform(
+    rotation,
+    (val) => `rotate3d(0,1,0,${val}deg)`
+  );
 
-  const startInfiniteSpin = startAngle => {
+  const startInfiniteSpin = (startAngle) => {
     controls.start({
       rotateY: [startAngle, startAngle - 360],
-      transition: { duration: 20, ease: 'linear', repeat: Infinity }
+      transition: { duration: 20, ease: "linear", repeat: Infinity },
     });
   };
 
@@ -46,8 +60,8 @@ const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] })
     else controls.stop();
   }, [autoplay]);
 
-  const handleUpdate = latest => {
-    if (typeof latest.rotateY === 'number') rotation.set(latest.rotateY);
+  const handleUpdate = (latest) => {
+    if (typeof latest.rotateY === "number") rotation.set(latest.rotateY);
   };
 
   const handleDrag = (_, info) => {
@@ -72,7 +86,7 @@ const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] })
   const handleImageLoad = (e, index) => {
     const { naturalWidth, naturalHeight } = e.target;
     const ratio = naturalWidth / naturalHeight;
-    setAspectRatios(prev => ({ ...prev, [index]: ratio }));
+    setAspectRatios((prev) => ({ ...prev, [index]: ratio }));
   };
 
   return (
@@ -80,11 +94,17 @@ const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] })
       {/* Fading edges */}
       <div
         className="absolute top-0 left-0 h-full w-[48px] z-10"
-        style={{ background: 'linear-gradient(to left, rgba(0,0,0,0) 0%, #060010 100%)' }}
+        style={{
+          background:
+            "linear-gradient(to left, rgba(0,0,0,0) 0%, #060010 100%)",
+        }}
       />
       <div
         className="absolute top-0 right-0 h-full w-[48px] z-10"
-        style={{ background: 'linear-gradient(to right, rgba(0,0,0,0) 0%, #060010 100%)' }}
+        style={{
+          background:
+            "linear-gradient(to right, rgba(0,0,0,0) 0%, #060010 100%)",
+        }}
       />
 
       <div className="flex h-full items-center justify-center [perspective:1000px] [transform-style:preserve-3d]">
@@ -101,7 +121,7 @@ const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] })
             transform: transform,
             rotateY: rotation,
             width: cylinderWidth,
-            transformStyle: 'preserve-3d',
+            transformStyle: "preserve-3d",
           }}
           className="flex min-h-[200px] cursor-grab items-center justify-center [transform-style:preserve-3d]"
         >
@@ -117,17 +137,27 @@ const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] })
                 className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]"
                 style={{
                   width: `${faceWidth}px`,
-                  transform: `rotateY(${(360 / faceCount) * i}deg) translateZ(${radius}px)`,
+                  transform: `rotateY(${
+                    (360 / faceCount) * i
+                  }deg) translateZ(${radius}px)`,
                 }}
               >
                 <img
                   src={url}
                   alt="gallery"
-                  onLoad={e => handleImageLoad(e, i)}
+                  onLoad={(e) => handleImageLoad(e, i)}
                   className={`pointer-events-none mx-2 rounded-[15px] border-[3px] border-white/10 object-cover
                     transition-transform duration-300 ease-out
-                    ${isLandscape ? 'w-[300px] h-[180px]' : 'w-[180px] h-[260px]'}
-                    sm:${isLandscape ? 'w-[220px] h-[140px]' : 'w-[160px] h-[220px]'}`}
+                    ${
+                      isLandscape
+                        ? "w-[300px] h-[180px]"
+                        : "w-[180px] h-[260px]"
+                    }
+                    sm:${
+                      isLandscape
+                        ? "w-[220px] h-[140px]"
+                        : "w-[160px] h-[220px]"
+                    }`}
                 />
               </div>
             );
