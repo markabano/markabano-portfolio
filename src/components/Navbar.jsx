@@ -8,9 +8,12 @@ function Navbar() {
   return (
     <div className="flex justify-center">
       <nav className="fixed top-3 z-50 w-[90%] max-w-5xl rounded-4xl bg-white/15 backdrop-blur-md border border-white/15 shadow-lg px-6 py-3">
-        <div className="relative flex items-center justify-center">
+        <div className="relative flex items-center justify-between">
+          <div>
+            <img src="/logo.png" alt="Logo" className="h-9 rounded-4xl" />
+          </div>
           {/* Desktop Menu (Centered) */}
-          <ul className="hidden sm:flex flex-row text-white items-center gap-30">
+          <ul className="hidden sm:flex flex-row text-white items-center gap-15">
             <motion.li
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 300 }}
