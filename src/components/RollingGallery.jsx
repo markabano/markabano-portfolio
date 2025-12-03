@@ -7,14 +7,6 @@ import {
 } from "motion/react";
 
 const IMGS = [
-  "/imgs/1.jpeg",
-  "/imgs/2.jpeg",
-  "/imgs/3.jpeg",
-  "/imgs/4.jpeg",
-  "/imgs/5.jpeg",
-  "/imgs/6.jpeg",
-  "/imgs/7.jpeg",
-  "/imgs/8.jpeg",
 ];
 
 const RollingGallery = ({
